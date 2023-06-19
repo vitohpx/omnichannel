@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/api';
 
 
-const CreateUser = () => {
-
+const EditUser = () => {
+    const { id } = useParams();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [user, setUser] = useState({
         id: '',
         name: '',
@@ -17,15 +16,14 @@ const CreateUser = () => {
     });
     const navigate = useNavigate();
 
-    const createUser = async (user) => {
+
+    const updateUser = async (user) => {
         try {
             setLoading(true);
-            setError(null);
-            await api.post('/users', user);
+            await api.put(`/users/${id}`, user);
             setLoading(false);
         } catch (error) {
             setLoading(false);
-            setError(error.response.data.error);
             throw error;
         }
     };
@@ -39,17 +37,18 @@ const CreateUser = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
         try {
-            await createUser(user);
-
+            await updateUser(user);
             navigate('/');
-
+            alert('Usuário atualizado com sucesso!');
         } catch (error) {
             console.log(error);
         }
-        setLoading(false);
     };
+
+    if (!user) {
+        return <div>Carregando...</div>;
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -72,7 +71,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>CEP:</label>
                 <input
@@ -82,7 +80,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Estado:</label>
                 <input
@@ -102,7 +99,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <button type="submit" disabled={loading}>
                 {loading ? 'Loading...' : 'Submeter'}
             </button>
@@ -110,4 +106,4 @@ const CreateUser = () => {
     );
 };
 
-export default CreateUser;
+export default EditUser;

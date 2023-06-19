@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/api';
+import './Users.css';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -20,8 +21,10 @@ const Users = () => {
 
     return (
         <div>
-            <h2>Usuários</h2>
-            <Link to="/users">Adicionar Usuário</Link>
+            <div className='div-subtitle'>
+                <h2>Usuários</h2>
+                <Link className='link-add' to="/users">Adicionar Usuário</Link>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -36,6 +39,7 @@ const Users = () => {
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
+                            <Link to={`/users/edit/${user.id}`}>Editar</Link>
                         </tr>
                     ))}
                 </tbody>
