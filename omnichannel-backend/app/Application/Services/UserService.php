@@ -71,8 +71,8 @@ class UserService
 
     private function isCepFromAmazonas(string $address): bool
     {
-        // $cep = substr($address, 0, 5);
-        $cep = "69077-120";
+        
+        $cep = $address;
         $response = file_get_contents("https://viacep.com.br/ws/{$cep}/json/");
         $data = json_decode($response, true);
         $state = $data['uf'];
