@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../api/api';
 
 const Users = () => {
@@ -20,6 +21,7 @@ const Users = () => {
     return (
         <div>
             <h2>Usuários</h2>
+            <Link to="/users">Adicionar Usuário</Link>
             <table>
                 <thead>
                     <tr>
