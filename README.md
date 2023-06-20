@@ -1,5 +1,37 @@
 # Omnichannel
 
+## Problema
+
+Atualmente, disponibilizamos diversos canais digitais para interação com as pessoas
+que compõem nosso perfil de clientes. Identificamos a necessidade de unificar a experiência
+destas pessoas em todos os canais, de maneira mais objetiva, precisamos possibilitar as
+seguintes ações:
+● Iniciar interação em qualquer canal;
+● Continuar interação a partir de qualquer canal, ou seja uma interação iniciada no canal A
+deve ser continuada de maneira fluida no canal B;
+● Receber mensagem no canal aberto pelo usuário, mesmo que nenhuma interação tenha
+sido realizada por ele neste canal.
+No entanto, entendemos que para possibilitar esse conceito de Omnichannel faz-se
+necessário prover uma infraestrutura escalável, que possa suportar a necessidade de todas
+pessoas que consomem diariamente nossos serviços.
+
+## Desafio
+1. Dê um nome para o projeto;
+2. Implementa uma única feature, a de criação de contas de usuário, com os campos
+que julgar necessário, os campos que devem ser utilizados para a identificação de
+pessoas devem ser decididos por você com base no seu entendimento do problema.
+A stack de tecnologia deverá ser obrigatoriamente Laravel para o Backend e Vue.js,
+React ou Angular para o frontEnd. A solução pode ter quantos projetos,
+pacotes e/ou bibliotecas você julgar necessário, dever roda em container docker;
+Durante o preenchimento dos campos o usuário deve apresentar um endereço válido,
+para isso é necessário utilizar a API do serviço https://viacep.com.br.
+Regras para a implementação:
+2.1 Cadastrar usuário;
+2.2 Listar usuário;
+2.3 Editar usuário;
+2.4 Se o Cep não for do estado do amazonas não pode se cadastrar;
+2.5 Se o usuário tiver menos de 18 anos não pode se cadastrar;
+
 ## Documentação de Execução do Projeto
 
 Esta documentação descreve os passos necessários para executar o projeto completo, incluindo o backend, o frontend e os contêineres Docker.
