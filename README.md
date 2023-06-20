@@ -1,4 +1,4 @@
-# omnichannel
+# Omnichannel
 
 ## Documentação de Execução do Projeto
 
