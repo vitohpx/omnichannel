@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/api';
 
 
@@ -52,7 +52,7 @@ const CreateUser = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
             <div>
                 <label>Nome:</label>
                 <input
@@ -62,7 +62,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Email:</label>
                 <input
@@ -72,7 +71,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>CEP:</label>
                 <input
@@ -82,7 +80,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Estado:</label>
                 <input
@@ -92,7 +89,6 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Data de Nascimento:</label>
                 <input
@@ -102,10 +98,12 @@ const CreateUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
-            <button type="submit" disabled={loading}>
-                {loading ? 'Loading...' : 'Submeter'}
-            </button>
+            <div className='buttons-create-edit'>
+                <button className='submit-button' type="submit" disabled={loading}>
+                    {loading ? 'Loading...' : 'Submeter'}
+                </button>
+                <Link className='cancel-link' to="/">Cancelar</Link>
+            </div>
         </form>
     );
 };

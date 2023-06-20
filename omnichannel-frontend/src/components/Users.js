@@ -22,10 +22,9 @@ const Users = () => {
     return (
         <div>
             <div className='div-subtitle'>
-                <h2>Usuários</h2>
                 <Link className='link-add' to="/users">Adicionar Usuário</Link>
             </div>
-            <table>
+            <table className='table'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -39,7 +38,7 @@ const Users = () => {
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <Link to={`/users/edit/${user.id}`}>Editar</Link>
+                            <td><Link className='edit-link' to={{ pathname: `/users/edit/${user.id}`, search: `name=${user.name}&email=${user.email}&address=${user.address}&state=${user.state}&birth_date=${user.birthDate}` }}>Editar</Link></td>
                         </tr>
                     ))}
                 </tbody>

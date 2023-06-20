@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import api from '../api/api';
 
 
 const EditUser = () => {
+    const searchParams = new URLSearchParams(document.location.search)
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState({
         id: '',
-        name: '',
-        email: '',
-        address: '',
-        state: '',
-        birth_date: '',
+        name: searchParams.get('name') || '',
+        email: searchParams.get('email') || '',
+        address: searchParams.get('address') || '',
+        state: searchParams.get('state') || '',
+        birth_date: searchParams.get('birth_date') || '',
     });
     const navigate = useNavigate();
-
 
     const updateUser = async (user) => {
         try {
@@ -51,7 +51,7 @@ const EditUser = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
             <div>
                 <label>Nome:</label>
                 <input
@@ -61,7 +61,6 @@ const EditUser = () => {
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Email:</label>
                 <input
@@ -83,25 +82,29 @@ const EditUser = () => {
             <div>
                 <label>Estado:</label>
                 <input
+                    disabled
                     type="text"
                     name="state"
                     value={user.state}
                     onChange={handleChange}
                 />
             </div>
-            <br />
             <div>
                 <label>Data de Nascimento:</label>
                 <input
+                    disabled
                     type="date"
                     name="birth_date"
                     value={user.birth_date}
                     onChange={handleChange}
                 />
             </div>
-            <button type="submit" disabled={loading}>
-                {loading ? 'Loading...' : 'Submeter'}
-            </button>
+            <div className='buttons-create-edit'>
+                <button className='submit-button' type="submit" disabled={loading}>
+                    {loading ? 'Loading...' : 'Submeter'}
+                </button>
+                <Link className='cancel-link' to="/">Cancelar</Link>
+            </div>
         </form>
     );
 };
