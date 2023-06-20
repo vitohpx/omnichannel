@@ -71,7 +71,7 @@ O front-end estará acessível em `http://localhost:3000`.
 1. Certifique-se de ter o Docker instalado e em execução no seu sistema.
 
 2. Crie um arquivo chamado `Dockerfile` no diretório do back-end com o seguinte conteúdo:
-
+```
 # Use uma imagem base do PHP com Apache
 FROM php:7.4-apache
 
@@ -119,11 +119,12 @@ EXPOSE 80
 CMD ["apache2-foreground"]
 
 RUN php artisan serve
+```
 
 
 
 3. Crie um arquivo chamado `Dockerfile` no diretório do front-end com o seguinte conteúdo:
-
+```
 # Imagem base
 FROM node:14-alpine
 
@@ -144,7 +145,7 @@ EXPOSE 3000
 
 # Comando para iniciar o servidor web do React
 CMD ["npm", "start"]
-
+```
 
 4. Crie um arquivo chamado `docker-compose.yml` no diretório raiz do projeto com o seguinte conteúdo:
 
