@@ -25,11 +25,17 @@ React ou Angular para o frontEnd. A solução pode ter quantos projetos,
 pacotes e/ou bibliotecas você julgar necessário, dever roda em container docker;
 Durante o preenchimento dos campos o usuário deve apresentar um endereço válido,
 para isso é necessário utilizar a API do serviço https://viacep.com.br.
+
 Regras para a implementação:
+
 2.1 Cadastrar usuário;
+
 2.2 Listar usuário;
+
 2.3 Editar usuário;
+
 2.4 Se o Cep não for do estado do amazonas não pode se cadastrar;
+
 2.5 Se o usuário tiver menos de 18 anos não pode se cadastrar;
 
 ## Documentação de Execução do Projeto
