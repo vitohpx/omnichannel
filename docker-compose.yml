@@ -1,24 +1,31 @@
 version: '3.8'
 services:
+  database:
+      image: mysql:latest
+      container_name: database
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: 12345
+        MYSQL_DATABASE: omnichannel
+        MYSQL_PASSWORD: 12345
+        MYSQL_USER: omnichannel
+      volumes:
+        - ./mysql-init.sql:/tmp/mysql-init.sql
+      ports:
+        - 3306:3306
   frontend:
     build:
       context: ./omnichannel-frontend
       dockerfile: Dockerfile
-    ports:
+    ports: 
       - 3000:3000
-    volumes:
-      - ./omnichannel-frontend:/app
     depends_on:
-      - backend
-
-  backend:
+      - database
+  backend:      
     build:
       context: ./omnichannel-backend
       dockerfile: Dockerfile
     ports:
-      - 8000:80
-    volumes:
-      - ./omnichannel-backend:/app
+      - 8000:8000
     depends_on:
       - database
-

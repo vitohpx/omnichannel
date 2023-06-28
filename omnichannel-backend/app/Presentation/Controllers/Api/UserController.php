@@ -30,6 +30,8 @@ class UserController extends Controller
     {
         try {
             $users = $this->userService->getAllUsers();
+            // $hostname = env("DB_HOST", "somedefaultvalue");
+            // return response()->json($hostname,201);
             return response()->json($users);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
